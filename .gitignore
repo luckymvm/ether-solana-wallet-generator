@@ -1,0 +1,8 @@
+node_modules
+.idea
+
+evmWallets.txt
+wallets.txt
+evm_wallets_data.txt
+solana_wallets_data.txt
+template.xlsx

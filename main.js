@@ -1,10 +1,10 @@
 const { ethers } = require("ethers");
 const { Keypair } = require("@solana/web3.js");
 const ExcelJS = require('exceljs');
-const readline = require('readline');
+const bs58 = require('bs58');
 const fs = require("fs");
 
-// Генерация Ethereum (EVM) кошелька
+// EVM wallets generation
 function generateEVMWallet() {
 	const wallet = ethers.Wallet.createRandom();
 	return {
@@ -13,17 +13,17 @@ function generateEVMWallet() {
 	};
 }
 
-// Генерация Solana кошелька
+// Solana wallets generation
 function generateSolanaWallet() {
 	const keypair = Keypair.generate();
 	return {
 		address: keypair.publicKey.toBase58(),
-		privateKey: Buffer.from(keypair.secretKey).toString("hex"),
+		privateKey: bs58.encode(keypair.secretKey),
 	};
 }
 
-// Сохранение кошельков в файл
-// type evm or solana
+// Saving wallets to txt file
+// type: evm or solana
 function saveWalletsToFile(type, wallets) {
 	const data = wallets.map((wallet, index) => `Wallet ${index + 1}:
   Address: ${wallet.address}
@@ -48,19 +48,18 @@ async function generateExcel(publicKeys) {
   const workbook = new ExcelJS.Workbook();
   const worksheet = workbook.addWorksheet('Address');
 
-  // Добавление заголовка
+  // Adding headers
   worksheet.columns = [{ header: 'Address', key: 'address' },
    { header: 'AddressName(optional)', key: 'name' }
 	];
 
   publicKeys.forEach(pk => worksheet.addRow({address: pk}));
 
-  // Сохранение файла
+  // Saving wallets to xlsx file
   await workbook.xlsx.writeFile('template.xlsx');
   console.log('Файл template.xlsx создан!');
 }
 
-// Генерация и вывод результатов
 function main() {
 	const numberOfWallets = Number(process.argv[2]);
 
