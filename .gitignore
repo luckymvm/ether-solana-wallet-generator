@@ -2,7 +2,9 @@ node_modules
 .idea
 
 evmWallets.txt
-wallets.txt
 evm_wallets_data.txt
+evm_wallets_sheet.xlsx
+wallets.txt
 solana_wallets_data.txt
-template.xlsx
+solana_wallets_sheet.xlsx
+OKXtemplate.xlsx
