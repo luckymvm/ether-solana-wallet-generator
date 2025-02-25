@@ -19,8 +19,8 @@ node main.js 20
 ```
 
 - `evm_wallets_data.txt` — contains public and private keys for Ethereum.  
-- `evm_wallets_sheet.xlsx` — contains public and private keys for Ethereum.
-- `solana_wallets_data.txt` — contains spreadsheet in the format (Number / Network / Public key / Private key) for Solana.  
+- `evm_wallets_sheet.xlsx` — contains spreadsheet in the format (Number / Network / Public key / Private key) for Ethereum.
+- `solana_wallets_data.txt` — contains public and private keys for Solana.  
 - `solana_wallets_sheet.txt` — contains spreadsheet in the format (Number / Network / Public key / Private key) for Solana.
 - `evmWallets.txt` — contains only private keys for Ethereum.  
 - `wallets.txt` — contains only private keys for Solana.  
